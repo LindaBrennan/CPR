@@ -1,0 +1,733 @@
+
+/******TABLE OF CONTENTS******
+
+Fonts
+General Styles
+Square Stats
+Odometer Animation
+Parallax
+Welcome Section
+Employees Section
+Impact Section
+Media Queries
+
+*****************************/
+
+/* FONTS */
+
+/*Remove hard-coded URLs when you move the CSS file into the new website. Remember to upload the font files to the new website, as well.*/
+
+/*This CSS resource incorporates links to font software which is the valuable copyrighted property of Monotype Imaging and/or its suppliers. You may not attempt to copy, install, redistribute, convert, modify or reverse engineer this font software. Please contact Monotype Imaging with any questions regarding Web Fonts:  http://webfonts.fonts.com*/
+
+/* Avenir - from our website */
+
+@font-face{
+font-family:"Avenir LT W01 55 Roman";
+
+src:url("../fonts/f61bf0f6-c193-4100-b940-12a1a01dcee5.eot");
+src:url("../fonts/f61bf0f6-c193-4100-b940-12a1a01dcee5.eot?#iefix") format("embedded-opentype"),url("../fonts/b9ebb19d-88c1-4cbd-9baf-cf51972422ec.woff") format("woff"),url("http://unitedwaytyr.com/document.doc?id=37") format("truetype"),url("http://unitedwaytyr.com/document.doc?id=38") format("svg");
+}
+
+@font-face{
+font-family:"Avenir LT W01 85 Heavy";
+src:url("../fonts/2f5a6074-badc-4e08-83f1-ed67fe5c3d7c.eot");
+src:url("../fonts/2f5a6074-badc-4e08-83f1-ed67fe5c3d7c.eot?#iefix") format("embedded-opentype"),url("../fonts/7147ec3a-8ff8-4ec9-8c5c-bd1571dc6ae6.woff") format("woff"),url("http://unitedwaytyr.com/document.doc?id=14") format("truetype"),url("http://unitedwaytyr.com/document.doc?id=15") format("svg");
+}
+
+/*Google Fonts - Owald*/
+
+/* latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(https://fonts.gstatic.com/s/oswald/v10/pEobIV_lL25TKBpqVI_a2w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Oswald Bold'), local('Oswald-Bold'), url(https://fonts.gstatic.com/s/oswald/v10/bH7276GfdCjMjApa_dkG6VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/*Possibly need these for Oswald French characters??*/
+
+/* latin-ext */
+/*@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(https://fonts.gstatic.com/s/oswald/v10/yg0glPPxXUISnKUejCX4qfesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}*/
+
+/*@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Oswald Bold'), local('Oswald-Bold'), url(https://fonts.gstatic.com/s/oswald/v10/dI-qzxlKVQA6TUC5RKSb3xJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}*/
+
+
+/* GENERAL STYLES */
+
+/* Apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+/*Set the overall page font size to 1.67em as default*/
+.corpart-container {	
+	font-family: "Avenir LT W01 55 Roman", Arial, "Helvetica Neue", Helvetica, sans-serif; 
+	font-size:1.67em;
+	color:#222222;
+}
+/*Add padding to content sections*/
+.content-padding {
+	padding-top:0.6em;
+}
+/*Section divider - change the colour for each workplace*/
+.section-divider-container {
+	border-top:1px solid #0814b1;
+	margin:1em 0 0 0;
+	padding:0;
+	text-align:center;
+	padding-bottom:0.5em;
+}
+.section-divider-container h2  {
+	color:#fff;
+	font-size:0.9em;
+	background-color:#0814b1;
+	margin:0;
+	padding:0;
+	font-family: "Avenir LT W01 55 Roman", Arial, "Helvetica Neue", Helvetica, sans-serif; 	
+}
+/*Draw a line above the section subheadings*/
+h3 {
+	font-family: "Avenir LT W01 55 Roman", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size:0.8em;
+	border-top:1px solid #0814b1;
+	color:#0814b1;
+}
+/*Reduce font size for small text areas*/
+.small-text p, .smaller {
+	font-size:0.55em;
+	font-weight:normal;
+}
+.small-text ul li {
+	font-size:0.9em;
+}
+blockquote {
+	margin-top:1em;
+	color:#0814b1;
+	font-family: Garamond, serif;
+	border-left:0;
+	line-height:1.1em;
+}
+cite {
+	color:#0814b1;
+	margin-bottom:1em;
+	font-size:0.7em;
+	font-style:normal;
+}
+cite::before {
+	content:'\2014';
+} 
+.section-padding {
+	padding-top:1em;
+}
+.caption {
+	font-size:0.55em;	
+}
+
+/* SQUARE STATS */
+
+/*Responsive square div with text inside*/
+.square-container { 
+    background-color:#0814b1;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.square-container:after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+.square-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;    
+	font-size: 2.5em;
+	color:#fff;
+	padding-top: 20%;
+	font-family: 'Oswald', sans-serif;
+}
+.square-small {
+	display:block;
+	font-size:0.5em;
+	font-family: "Avenir LT W01 55 Roman", Arial, "Helvetica Neue", Helvetica, sans-serif; 
+}
+.square-text {
+	font-size:0.8em;
+	line-height:1.2em;
+	display:inline-block;
+}
+/*Bottom-align the text block*/
+ul.square li {
+	float: none;
+    display: inline-block;
+    padding:0;
+    /*vertical-align:bottom;*/
+    vertical-align:middle;
+} 
+ul.square li.square-text {
+	padding-left:0.5em;
+}
+
+
+/* ODOMETER ANIMATION*/
+
+span.odometer-symbol {
+	display:inline-block;
+	position:relative;
+	top:0.15em;
+}
+
+
+
+/*Odometer default theme styles - http://github.hubspot.com/odometer/docs/welcome/ */
+.odometer.odometer-auto-theme, .odometer.odometer-theme-default {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  position: relative;
+}
+.odometer.odometer-auto-theme, .odometer.odometer-theme-default {
+  *display: inline;
+}
+.odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-default .odometer-digit {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  position: relative;
+}
+.odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-default .odometer-digit {
+  *display: inline;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer, .odometer.odometer-theme-default .odometer-digit .odometer-digit-spacer {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  visibility: hidden;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer, .odometer.odometer-theme-default .odometer-digit .odometer-digit-spacer {
+  *display: inline;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-theme-default .odometer-digit .odometer-digit-inner {
+  text-align: left;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon, .odometer.odometer-theme-default .odometer-digit .odometer-ribbon {
+  display: block;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon-inner, .odometer.odometer-theme-default .odometer-digit .odometer-ribbon-inner {
+  display: block;
+  -webkit-backface-visibility: hidden;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-value, .odometer.odometer-theme-default .odometer-digit .odometer-value {
+  display: block;
+  -webkit-transform: translateZ(0);
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value, .odometer.odometer-theme-default .odometer-digit .odometer-value.odometer-last-value {
+  position: absolute;
+}
+.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner {
+  -webkit-transition: -webkit-transform 2s;
+  -moz-transition: -moz-transform 2s;
+  -ms-transition: -ms-transform 2s;
+  -o-transition: -o-transform 2s;
+  transition: transform 2s;
+}
+.odometer.odometer-auto-theme.odometer-animating-up.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up.odometer-animating .odometer-ribbon-inner {
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.odometer.odometer-auto-theme.odometer-animating-down .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down .odometer-ribbon-inner {
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+  -webkit-transition: -webkit-transform 2s;
+  -moz-transition: -moz-transform 2s;
+  -ms-transition: -ms-transform 2s;
+  -o-transition: -o-transform 2s;
+  transition: transform 2s;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+.odometer.odometer-auto-theme, .odometer.odometer-theme-default {
+  font-family: "Helvetica Neue", sans-serif;
+  line-height: 1.1em;
+}
+.odometer.odometer-auto-theme .odometer-value, .odometer.odometer-theme-default .odometer-value {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+}
+
+
+/* PARALLAX */
+
+/* Fixed background image with text overlay or section header overlay */
+.parallax {
+	background-size: cover;
+	height: 20em; 
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	text-align:center;
+}
+
+/*Different parallax backgrounds are specified here*/
+.parallax-1 {
+  	background-image: url("../img/rbc/2016_RBC_Corp_Stew_Report.jpg");
+}
+.parallax-2 {
+	background-image: url("../img/rbc/Engagement_2-1920.jpg");
+	height: 20em;
+}
+.parallax-3 {
+	background-image: url("../img/rbc/abrone-1920.jpg");
+	height: 20em;	
+}
+.parallax-4 {
+	background-image: url("../img/rbc/Thank_You-1920.jpg");
+	height: 20em;	
+}
+.parallax-5 {
+	background-image: url("http://placehold.it/1920x1000");
+	height: 20em;	
+}
+.parallax .intro {
+    padding: 1em;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); 
+    text-align:center;
+}
+.parallax h2 {
+	color:#fff;
+}
+.parallax h1 {
+    font-family: "Avenir LT W01 85 Heavy", Arial, "Helvetica Neue", Helvetica, sans-serif; 	
+	color:#fff;
+	font-weight:bold;
+	font-size:1.2em;
+	text-transform: uppercase;
+	margin: 0.5em 0 0.3em 0;
+}
+
+/*HEADER SECTION*/
+
+h1.text-on-bkgd {
+	font-size:1.5em;
+	line-height:1.0em;
+}
+#workplace-logo {
+	padding-bottom:1em;
+}
+#UW-logo {
+	padding-top:1em;
+}
+
+
+/* WELCOME SECTION */
+
+div.welcome {
+	padding-top:1em;
+}
+.welcome h2 {
+	font-family: "Avenir LT W01 55 Roman", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size:1.2em;
+	border-top:1px solid #0814b1;
+	color:#0814b1;
+}
+
+/* EMPLOYEES SECTION */
+
+/*Edits to square stats*/
+.employee.square-container { 
+    background-color:#d3ac09;
+}
+.employee .square-content {  
+	font-size: 1.7em;
+	color:#0814b1;
+	line-height:1em;
+}
+
+/* IMPACT SECTION*/
+.impact {
+	background-color:#e6e6e6;
+	margin-bottom:1em;
+}
+.impact h3 {
+	font-size:1.2em;
+	border-top:1px solid #0814b1;
+	color:#0814b1;
+	line-height:1em;
+}
+.pillar-heading {
+	font-size:0.7em;
+	/*border-top:1px solid #0814b1;*/
+	color:#0814b1;
+}
+ul.pillar li {
+	line-height:1.5em;
+	margin-top:1em;
+}
+.pillar-img {
+	width:300px;
+	height:auto;
+}
+.pillar {
+	line-height:1.4em;
+	padding-top:0.5em;
+}
+.pillar-stat-number { 
+	font-size: 1.5em;
+	color:#0814b1;
+	font-family: 'Oswald', sans-serif;
+}
+.pillar-stat-small {
+	display:block;
+	font-size:0.7em;
+	padding-left:1.1em;
+	color:#0814b1;
+	font-family: "Avenir LT W01 55 Roman", Arial, "Helvetica Neue", Helvetica, sans-serif; 
+}
+.pillar-text {
+	padding-top:0.3em;
+}
+.pillar-text p {
+	line-height:1.2em;
+}
+.right-border {
+	border-right:1px solid #0814b1;
+}
+
+
+/* RECOGNITION SECTION */
+.award {
+	width:300px;
+	height:auto;
+}
+.slideshow {
+	background-color:#e6e6e6;
+}
+.twitter {
+	color:#0814b1;
+}
+
+
+/* FOOTER */
+.footer-grey {
+	background-color:#4d4d4d;
+	font-size:0.5em;
+}
+.footer {
+	background-color:#0814b1;
+	color:#fff;
+}
+.footer.section-padding {
+	padding-bottom:1em;
+}
+.footer a {
+	color:#fff;
+	text-decoration:underline;
+	text-decoration-style:dotted;
+}
+.footer a:hover, .footer a:focus {
+	color:#fff;
+	text-decoration-style:solid;
+}
+.print {
+	font-size:0.8em;
+}
+.thankyou {
+	padding-bottom:1.5em;
+}
+
+
+
+
+/* MEDIA QUERIES */
+
+/* Small screens < 641px */
+/*@media only screen and (max-width: 40em) { */	
+@media only screen and (max-width: 31.250em) { 	
+	
+	/*Centre the word Menu in the mobile menu*/
+	.menu-link {
+		width:100%; 
+		text-align:center; 
+		display:block;
+	}
+	/*Colour of the Menu link when the dropdown is displayed*/
+	.top-bar.expanded .toggle-topbar a {
+		color:#fff;
+	}
+	/* Center the mobile menu items in the dropdown */
+	.top-bar-section ul li > a {
+		text-align:center;
+	}
+	/*Reduce size of text overlay on main parallax image*/
+	h1.text-on-bkgd {
+		font-size:1em;
+	}
+	/*Reduce line-height subtitle font*/
+	span.smaller {
+		line-height:1.3em;
+	}
+	/* Add vertical space between the stat squares */
+	ul.square li {
+		padding-top:1em;
+	}
+	/* Increase font size for stat squares text */	
+	.square-text {
+		font-size:1.5em;
+		line-height:1.5em;
+	}	
+	/*Reduce size of text beside square stats*/
+	li.square-text div {
+		font-size:0.8em;
+		line-height:1.2em;
+	}
+	/*Add space above and below employee stats*/
+	.employee-stat-container-small {
+		margin-top:2em; 
+		margin-bottom:1em;
+	}
+	/*Decrease space above employee stat when there is more than one in a section*/
+	.employee-stat-container-small-extra {
+		margin-top:0em; 
+		margin-bottom:1em;
+	}
+	/*Reduce size of quote*/
+	blockquote {
+		margin-top:0em;
+		font-size:0.8em;
+		line-height:1.1em;
+	}
+	cite {
+		font-size:0.6em;
+	}
+	/*Reduce font size for pillar stat small text*/
+	.pillar-stat-small {
+		font-size:0.6em;
+	}
+	/*Remove borders from pillar chart*/
+	.right-border {
+		border-right:0em;
+	}
+	/*Add space under captions*/
+	.caption {
+		padding-bottom:1em;	
+	}
+	.footer img {
+		margin-top:1em;
+	}
+	.pillar-stat-number {
+		font-size:1.3em;
+	}
+	.pillar-stat-small {
+		padding-left:0;
+	}
+	.footer {
+		text-align:center;
+	}
+	.print {
+		padding-top:2em;
+	}
+
+	/*Change parallax background image behaviour for smaller devices - use background-attachment: scroll*/
+	.parallax {
+		background-size: cover;
+		height: 20em; 
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		text-align:center;
+	}
+	.crop {
+		object-fit: cover;
+		border:2px solid lime;
+	}
+
+}
+
+/*Phablet screens (large phone, small tablet) - 500px to 640px */
+@media only screen and (min-width: 31.250em) and (max-width: 40.062em) {
+/*Decrease size of square stat boxes*/
+	.square-container { 
+    	width: 90%;
+	}
+	.square-content {
+		font-size:2.7em;
+	}
+	/*Reduce line-height subtitle font*/
+	span.smaller {
+		line-height:1.4em;
+	}
+	/* Add vertical space between the stat squares */
+	ul.square li {
+		padding-top:1em;
+	}
+	/*Increase size of text beside square stats*/
+	li.square-text div {
+		font-size:2em;
+		width:90%;
+		line-height:1.2em;
+	}
+	.employee .square-content {
+ 	   font-size: 2.5em;
+	}
+	/*Employee stats overlap with the section header above - cleared them here*/
+	.employee-stat-container-small {
+		clear: left;
+	}
+	/*Add vertical space between the pillar sections*/
+	.kids, .poverty {
+		margin-top:1.5em;
+	}
+	blockquote {
+		padding:0;
+	}
+	/*Change parallax background image behaviour for smaller devices - use background-attachment: scroll*/
+	.parallax {
+		background-size: cover;
+		height: 20em; 
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		text-align:center;
+	}	
+
+}
+
+/* Medium screens - 641px to 1024px */
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+
+	.top-bar-section ul li a {
+		padding:0 0.8em !important;
+	}
+	h1 {
+		margin-top:2em;
+	}
+	/*Reduce size of stat font*/
+	.square-content {
+		font-size:2em;
+	}
+	.employee .square-content {
+		font-size:1.2em;
+	}
+	/*Reduce size of story title*/
+	.impact h3 {
+		font-size:0.9em;
+		line-height:1.2em;
+	}
+	/*Adjustments to Impact large grid of stats*/
+	.pillar-img {
+		width:100%;
+		height:auto;
+	}
+	.pillar-heading {
+		margin-top:1em;
+	}
+	/*Change parallax background image behaviour for smaller devices - use background-attachment: scroll*/
+	.parallax {
+		background-size: cover;
+		height: 20em; 
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		text-align:center;
+	}	
+	
+}
+
+
+/* PRINT STYLES */
+
+@media all {
+	.page-break	{ display: none; }
+}
+
+@media print {
+
+	.page-break	{ 
+		display: block; 
+		page-break-before: always; 
+	}
+	body { 
+		background: #fff; 
+	}
+	h1 {
+		font-size:2em;
+	}
+	div.top-bar { 
+		display: none !important; 
+	}	
+	h2 {
+		border-top:1px solid #0814b1;
+		color:#0814b1;
+		text-align:left;
+	}
+    #UW-logo img {
+        display:none;
+    }
+    #UW-logo:after {
+        /*content:url("../img/rbc/twitter-logo.jpg");*/
+        content:"UW logo image";
+    }
+	
+    /*Force browsers to print images */
+	-webkit-print-color-adjust: exact;
+	 print-color-adjust: exact;
+
+	/*Hide the footer*/
+	div.footer-grey, div.footer, div.print, div.print a {
+		display:none !important;
+	}
+	/*Hide the odometer section*/
+	ul.square {
+		display:none !important;	
+	}
+
+}
